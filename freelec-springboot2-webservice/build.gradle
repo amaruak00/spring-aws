@@ -1,6 +1,6 @@
 buildscript{
 	ext{
-		springBootVersion = '2.4.2'
+		springBootVersion = '2.1.9.RELEASE'
 	}
 	repositories{
 		mavenCentral()
@@ -11,16 +11,14 @@ buildscript{
 	}
 }
 
-plugins {
-	id 'org.springframework.boot' version '2.4.2'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
-	id 'eclipse'
-}
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-group = 'com.chap1'
+group = 'com.jojoldu.book'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
@@ -28,6 +26,7 @@ repositories {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
