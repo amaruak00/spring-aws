@@ -1,1 +1,2 @@
-examples
+freelec-springboot2-webservice/src/main/resources/application-oauth.properties
+.gitignore
