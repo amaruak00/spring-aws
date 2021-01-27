@@ -1,5 +1,9 @@
 package com.jojoldu.book.springbook.web;
 
+import javax.servlet.http.HttpSession;
+
+import com.jojoldu.book.springbook.config.auth.LoginUser;
+import com.jojoldu.book.springbook.config.auth.dto.SessionUser;
 import com.jojoldu.book.springbook.service.posts.PostsService;
 import com.jojoldu.book.springbook.web.dto.PostsResponseDto;
 
@@ -17,8 +21,13 @@ public class IndexController {
     private final PostsService postsService;
     
     @GetMapping("/") 
-    public String index(Model model){
+    public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc());
+
+        if(user != null){
+            model.addAttribute("userName", user.getName());
+        }
+
         return "index";
     }
 
